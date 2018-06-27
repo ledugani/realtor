@@ -10,6 +10,7 @@ import ListingForm from '../components/ListingForm/ListingForm';
 import './App.css';
 
 class App extends Component {
+  // 3.)
   state = {
     listings: [],
   }
@@ -18,7 +19,7 @@ class App extends Component {
   componentDidMount () {
     connection();
 
-    // 3.)
+    // 4.)
     listingRequest.getRequest()
       .then((listings) => {
         this.setState({listings: listings}); // could just put listings
@@ -33,7 +34,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="col-sm-6">
-          <Listings />
+          <Listings listings={this.state.listings} />
         </div>
 
         <div className="col-sm-6">
