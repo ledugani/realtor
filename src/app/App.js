@@ -13,6 +13,7 @@ class App extends Component {
   state = {
     listings: [],
   }
+
   // 2.)
   componentDidMount () {
     connection();
@@ -26,6 +27,7 @@ class App extends Component {
         console.error('error with listing GET', errror);
       });
   }
+
   // 1.)
   render () {
     return (
