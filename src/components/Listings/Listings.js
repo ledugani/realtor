@@ -5,7 +5,7 @@ import {listingShape} from '../../props/listingProp';
 import './Listings.css';
 
 class Listings extends React.Component {
-  static PropTypes = {
+  static propTypes = {
     listings: PropTypes.arrayOf(listingShape),
   };
 
