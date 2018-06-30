@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {listingShape} from '../../props/listingProp';
 import './Listings.css';
 
+import ListingItem from '../ListingItem/ListingItem';
+
 class Listings extends React.Component {
   static propTypes = {
     listings: PropTypes.arrayOf(listingShape),
@@ -12,9 +14,12 @@ class Listings extends React.Component {
   render () {
     const {listings} = this.props;
     // same thing as writing "const listings = this.props.listings"
-    const listingsItemComponents = listings.map((listingItem) => {
+    const listingsItemComponents = listings.map((listing) => {
       return (
-        <li key={listingItem.id}>{listingItem.price}</li>
+        <ListingItem
+          listing={listing}
+          key={listing.id}
+        />
       );
     });
 
