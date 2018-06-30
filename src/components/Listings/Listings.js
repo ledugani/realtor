@@ -1,8 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+import {listingShape} from '../../props/listingProp';
 import './Listings.css';
 
 class Listings extends React.Component {
+  static PropTypes = {
+    listings: PropTypes.arrayOf(listingShape),
+  };
+
   render () {
     const {listings} = this.props;
     // same thing as writing "const listings = this.props.listings"
