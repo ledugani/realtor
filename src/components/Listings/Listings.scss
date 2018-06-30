@@ -1,3 +1,13 @@
+@import 'styles/_colors';
+
 .Listings {
-  background-color: palegreen;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 50vh;
+  overflow: scroll;
+
+  ul{
+    padding: 0;
+  }
 }
