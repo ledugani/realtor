@@ -1,16 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {listingShape} from '../../props/listingProp';
-import {formatPrice} from '../../helpers';
+import {formatPrice} from '../../helper';
 import './ListingItem.css';
 
 class ListingItem extends React.Component {
   static propTypes = {
     listing: listingShape,
+    index: PropTypes.number,
   }
 
   render () {
-    const {listing} = this.props;
+    const {listing, index} = this.props;
     return (
       <li className='ListingItem text-center' onClick={this.listingClick}>
         <span className="col-xs-2"><strong>Listing {index + 1}:</strong></span>
