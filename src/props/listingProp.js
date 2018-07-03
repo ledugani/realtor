@@ -10,7 +10,7 @@ const listingShape = PropTypes.shape({
   numBeds: PropTypes.number.isRequired,
   numBaths: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
-  estimatedMonthlyMorgage: PropTypes.number.isRequired,
+  estimatedMonthlyMortgage: PropTypes.number.isRequired,
   lotInAcres: PropTypes.number.isRequired,
   yearBuilt: PropTypes.number.isRequired,
   heating: PropTypes.string.isRequired,
@@ -18,4 +18,11 @@ const listingShape = PropTypes.shape({
   imageUrl: PropTypes.string.isRequired,
 });
 
-export {listingShape};
+const listingShapeOptional = PropTypes.oneOfType([
+  PropTypes.shape({
+    nope: PropTypes.string.isRequired,
+  }),
+  listingShape,
+]);
+
+export {listingShape, listingShapeOptional};
