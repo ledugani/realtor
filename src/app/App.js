@@ -13,7 +13,15 @@ class App extends Component {
   // 3.)
   state = {
     listings: [],
+    selectedListingId: -1,
   }
+
+  // 5.)
+  listingSelectEvent = (id) => {
+    this.setState({
+      selectedListingId: id,
+    });
+  };
 
   // 2.)
   componentDidMount () {
@@ -31,14 +39,19 @@ class App extends Component {
 
   // 1.)
   render () {
+    const {selectedListingId, listings} = this.state;
+    const selectedListing = listings.find(listing => listing.id === selectedListingId);
     return (
       <div className="App">
         <div className="col-sm-6">
-          <Listings listings={this.state.listings} />
+          <Listings
+            listings={this.state.listings}
+            onListingSelection={this.listingSelectEvent}
+          />
         </div>
 
         <div className="col-sm-6">
-          <Building />
+          <Building listing={selectedListing} />
         </div>
         <div className="col-sm-12">
           <ListingForm />
