@@ -2,25 +2,27 @@ import React from 'react';
 
 import './ListingForm.css';
 
+const defaultListing = {
+  address: '',
+  city: '',
+  state: '',
+  zip: 0,
+  squareFootage: 0,
+  price: 0,
+  numBeds: 0,
+  numBaths: 0,
+  description: '',
+  estimatedMonthlyMorgage: 0,
+  lotInAcres: 0,
+  yearBuilt: 0,
+  heating: '',
+  cooling: '',
+  imageUrl: '',
+};
+
 class ListingForm extends React.Component {
   state = {
-    newListing: {
-      address: '',
-      city: '',
-      state: '',
-      zip: 0,
-      squareFootage: 0,
-      price: 0,
-      numBeds: 0,
-      numBaths: 0,
-      description: '',
-      estimatedMonthlyMorgage: 0,
-      lotInAcres: 0,
-      yearBuilt: 0,
-      heating: '',
-      cooling: '',
-      imageUrl: '',
-    },
+    newListing: defaultListing,
   }
 
   formFieldStringState = (name, e) => {
@@ -97,15 +99,38 @@ class ListingForm extends React.Component {
 
   formSubmit = (e) => {
     const {onSubmit} = this.props;
+    const {newListing} = this.state;
+
     e.preventDefault();
-    onSubmit(this.state.newListing);
+    if (
+      newListing.address &&
+      newListing.city &&
+      newListing.state &&
+      newListing.zip &&
+      newListing.squareFootage &&
+      newListing.price &&
+      newListing.numBeds &&
+      newListing.numBaths &&
+      newListing.description &&
+      newListing.estimatedMonthlyMorgage &&
+      newListing.lotInAcres &&
+      newListing.yearBuilt &&
+      newListing.heating &&
+      newListing.cooling &&
+      newListing.imageUrl
+    ) {
+      onSubmit(this.state.newListing);
+      this.setState({newListing: defaultListing});
+    } else {
+      alert('Please fill out all sections of new listing form.')
+    }
   }
 
   render () {
     const { newListing } = this.state;
     return (
       <div className="col-xs-8 col-xs-offset-2">
-        <h2 className="text-center">Submit new property:</h2>
+        <h2 className="text-center header">Submit New Property:</h2>
         <form onSubmit={this.formSubmit}>
           <div className="row">
             <fieldset className="col-xs-3">
