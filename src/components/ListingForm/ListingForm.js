@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './ListingForm.css';
 
@@ -21,6 +22,10 @@ const defaultListing = {
 };
 
 class ListingForm extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  }
+
   state = {
     newListing: defaultListing,
   }
@@ -329,7 +334,7 @@ class ListingForm extends React.Component {
               />
             </fieldset>
           </div>
-          <button className="col-xs-6 btn btn-danger col-xs-offset-3">
+          <button className="col-xs-6 btn btn-primary col-xs-offset-3">
             Save house
           </button>
         </form>
