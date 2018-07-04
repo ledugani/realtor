@@ -23,6 +23,20 @@ class App extends Component {
     });
   };
 
+  // 6.) POST to fb
+  formSubmitEvent = (newListing) => {
+    listingRequest.postRequest(newListing)
+      .then(() => {
+        listingRequest.getRequest()
+          .then((listings) => {
+            this.setState({listings});
+          });
+      })
+      .catch((errrrorrr) => {
+        console.error('error posting listing to firebase', errrrorrr);
+      });
+  }
+
   // 2.)
   componentDidMount () {
     connection();
@@ -54,7 +68,9 @@ class App extends Component {
           <Building listing={selectedListing} />
         </div>
         <div className="col-sm-12">
-          <ListingForm />
+          <ListingForm
+            onSubmit={this.formSubmitEvent}
+          />
         </div>
       </div>
     );
